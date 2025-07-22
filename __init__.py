@@ -1,0 +1,17 @@
+from .flux_loader_node import (
+    NODE_CLASS_MAPPINGS as BASE_NODES,
+    NODE_DISPLAY_NAME_MAPPINGS as BASE_NAMES,
+)
+
+NODE_CLASS_MAPPINGS = {
+    **BASE_NODES,
+}
+
+NODE_DISPLAY_NAME_MAPPINGS = {
+    **BASE_NAMES,
+}
+
+WEB_DIRECTORY = "./web"
+__version__ = "1.0.0"
+
+__all__ = ["NODE_CLASS_MAPPINGS", "NODE_DISPLAY_NAME_MAPPINGS", "WEB_DIRECTORY"]
