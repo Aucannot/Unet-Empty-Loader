@@ -1,7 +1,7 @@
-# Flux-Empty-Loader
-Empty Flux model loader for hijacking forward
+# Unet-Empty-Loader
+Empty Unetloader for hijacking forward impl
 
 # Usage
 ```
-cd ComfyUI/custom_nodes && git clone https://github.com/Aucannot/Flux-Empty-Loader.git
+cd ComfyUI/custom_nodes && git clone https://github.com/Aucannot/Unet-Empty-Loader.git
 ```

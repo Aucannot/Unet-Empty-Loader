@@ -2,13 +2,19 @@ from .flux_loader_node import (
     NODE_CLASS_MAPPINGS as BASE_NODES,
     NODE_DISPLAY_NAME_MAPPINGS as BASE_NAMES,
 )
+from .unet_empty_loader_node import (
+    NODE_CLASS_MAPPINGS as UNET_EMPTY_NODES,
+    NODE_DISPLAY_NAME_MAPPINGS as UNET_EMPTY_NAMES,
+)
 
 NODE_CLASS_MAPPINGS = {
     **BASE_NODES,
+    **UNET_EMPTY_NODES,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
     **BASE_NAMES,
+    **UNET_EMPTY_NAMES,
 }
 
 WEB_DIRECTORY = "./web"
