@@ -8,13 +8,14 @@ class UNETEmptyLoader:
     @classmethod
     def INPUT_TYPES(s):
         return {"required": { "unet_name": (folder_paths.get_filename_list("diffusion_models"), ),
-                              "weight_dtype": (["default", "fp8_e4m3fn", "fp8_e4m3fn_fast", "fp8_e5m2"],)
+                              "weight_dtype": (["default", "fp8_e4m3fn", "fp8_e4m3fn_fast", "fp8_e5m2"],),
+                              "is_breakpoint": ("BOOLEAN", {"default" : False})
                              }}
     RETURN_TYPES = ("MODEL",)
     FUNCTION = "load_unet_empty"
     CATEGORY = "advanced/loaders"
 
-    def load_unet_empty(self, unet_name, weight_dtype):
+    def load_unet_empty(self, unet_name, weight_dtype, is_breakpoint):
         model_options = {}
         if weight_dtype == "fp8_e4m3fn":
             model_options["dtype"] = torch.float8_e4m3fn
@@ -67,6 +68,8 @@ class UNETEmptyLoader:
             model_config.optimizations["fp8"] = True
         model = model_config.get_model(new_sd, "")
         model = model.to(offload_device)
+        if is_breakpoint:
+            breakpoint()
         # without load weights from safetensors
         return (comfy.model_patcher.ModelPatcher(model, load_device=load_device, offload_device=offload_device),)
 
